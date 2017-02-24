@@ -1,8 +1,24 @@
 <!DOCTYPE html><html><head><meta charset="utf8"><title>Fonts</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/css/styles.css"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/">Home</a><a href="/blog.html">Blog</a><a href="/about.html">About</a><a href="/imprint.html">Imprint</a></nav><main id="content"><h1>Fonts</h1><p><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ul>
-<li>To use non-default fonts in the page, you can either<br>download and include them locally, or you can use<br>so called Content Delivery Networks (CDNs) to load<br>them from external source.</li>
-<li>External sources are<br><a href="https://www.fontsquirrel.com/" target="_blank" rel="external">fontsquirrel.com</a> or<br><a href="https://fonts.google.com/" target="_blank" rel="external">Google Fonts</a>. From here<br>you can either include the fonts into your files or<br>download them. Another source are platforms like<br><a href="http://www.dafont.com" target="_blank" rel="external">dafont.com</a>. Here you can only<br>download very fancy fonts.</li>
-<li>Fonts come in different formats. These formats are<br>SVG Fonts/Shapes, TrueType Fonts (TTF),<br>OpenType Fonts (OTF), The Web Open Font Format (WOFF)<br>The Web Open Font Format (WOFF 2.0) and<br>Embedded OpenType Fonts (EOT).</li>
-<li>If you want scalable high quality fonts, use SVG if<br>possible. Usually you have to inlcude most or even all<br>fonts anyway (depending on legacy support), since different<br>clients use different formats. (= Chaos)</li>
+<li>To use non-default fonts in the page, you can either
+download and include them locally, or you can use
+so called Content Delivery Networks (CDNs) to load
+them from external source.</li>
+<li>External sources are
+<a href="https://www.fontsquirrel.com/" target="_blank" rel="external">fontsquirrel.com</a> or
+<a href="https://fonts.google.com/" target="_blank" rel="external">Google Fonts</a>. From here
+you can either include the fonts into your files or
+download them. Another source are platforms like
+<a href="http://www.dafont.com" target="_blank" rel="external">dafont.com</a>. Here you can only
+download very fancy fonts.</li>
+<li>Fonts come in different formats. These formats are
+SVG Fonts/Shapes, TrueType Fonts (TTF),
+OpenType Fonts (OTF), The Web Open Font Format (WOFF)
+The Web Open Font Format (WOFF 2.0) and
+Embedded OpenType Fonts (EOT).</li>
+<li>If you want scalable high quality fonts, use SVG if
+possible. Usually you have to inlcude most or even all
+fonts anyway (depending on legacy support), since different
+clients use different formats. (= Chaos)</li>
 </ul>
 <p>Links:</p>
 <ul>
@@ -16,16 +32,27 @@
 <li><a href="http://www.dafont.com" target="_blank" rel="external">dafont.com</a></li>
 </ul>
 <h2 id="Using-Google-Fonts"><a href="#Using-Google-Fonts" class="headerlink" title="Using Google Fonts"></a>Using Google Fonts</h2><ul>
-<li>By using Google Fonts you can use a CDN to include any desired<br>font via <code>head</code> links, <code>head</code> <code>style</code>s or via CSS import.</li>
-<li>Also, you can include multiple font weights or even multiple fonts<br>at the same time, which saves HTTP-requests and time.</li>
-<li>Loading too many fonts can notably slow down your web page loading<br>and parsing process.</li>
+<li>By using Google Fonts you can use a CDN to include any desired
+font via <code>head</code> links, <code>head</code> <code>style</code>s or via CSS import.</li>
+<li>Also, you can include multiple font weights or even multiple fonts
+at the same time, which saves HTTP-requests and time.</li>
+<li>Loading too many fonts can notably slow down your web page loading
+and parsing process.</li>
 </ul>
-<p>Example for including two fonts as <code>head</code> link and style:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// head import link</div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line"> </div><div class="line">// head CSS import style:</div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css">@<span class="keyword">import</span> url(<span class="string">'https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans'</span>);</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>Example for including in CSS:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> url(<span class="string">'https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans'</span>);</div></pre></td></tr></table></figure></p>
-<p>Example of usage in CSS:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">font-family: 'Open Sans', sans-serif;</div><div class="line">font-family: 'PT Sans', sans-serif;</div></pre></td></tr></table></figure></p>
+<p>Example for including two fonts as <code>head</code> link and style:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// head import link</div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line"> </div><div class="line">// head CSS import style:</div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined">@import url('https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans');</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Example for including in CSS:
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> url(<span class="string">'https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans'</span>);</div></pre></td></tr></table></figure></p>
+<p>Example of usage in CSS:
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">font-family: 'Open Sans', sans-serif;</div><div class="line">font-family: 'PT Sans', sans-serif;</div></pre></td></tr></table></figure></p>
 <h2 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h2><ul>
-<li><em>Do</em> include maximum three fonts for your web site.<br>Too many fonts slow down your site.</li>
-<li><em>Do</em> load as many font information at once as possible.<br>Too many HTTP calls slow down the page load.</li>
-<li><em>Do</em> use Content Deliver Networks whenever possible.<br>Loading the fonts yourself slows down the loading process.<br>Also you will have to manage all fonts by yourself. And<br>a CDN is more likely to be available than your system.</li>
+<li><em>Do</em> include maximum three fonts for your web site.
+Too many fonts slow down your site.</li>
+<li><em>Do</em> load as many font information at once as possible.
+Too many HTTP calls slow down the page load.</li>
+<li><em>Do</em> use Content Deliver Networks whenever possible.
+Loading the fonts yourself slows down the loading process.
+Also you will have to manage all fonts by yourself. And
+a CDN is more likely to be available than your system.</li>
 </ul>
 </p></main><footer id="footer">&copy; by Marco Schaule</footer></div></body></html>
