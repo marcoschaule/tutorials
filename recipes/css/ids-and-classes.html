@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><title>IDs and Classes</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><h1>IDs and Classes</h1><p><p>This post describes the basic functionality of (custom) <code>id</code>s and <code>class</code>es and the best
+practices you should use when working with them.
+<a id="more"></a></p>
+<h2 id="IDs"><a href="#IDs" class="headerlink" title="IDs"></a>IDs</h2><p>CSS <code>id</code>s</p>
+<ul>
+<li>are accessed by the hash (<strong>#</strong>) character in CSS.</li>
+<li>should be used in declarative (like <code>id=&quot;header&quot;</code>) fashion.</li>
+<li><strong>identify exactly one</strong> element within the whole web site.</li>
+<li>should be <strong>used rarly</strong> since an ID that that appears multiple times can cause problems.</li>
+<li>are the <strong>faster method to find elements</strong> in the DOM since they should be unique.</li>
+<li>are often used for the <strong>structural elements</strong> of a web site like headers, footers, sidebars etc.</li>
+</ul>
+<p>Example:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- the text of this "div" --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"some-id"</span>&gt;</span>some text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* gets the color "red" by css" */</span></div><div class="line"><span class="selector-id">#some-id</span> &#123;</div><div class="line">  <span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><p>CSS <code>class</code>es</p>
+<ul>
+<li>are accessed by the dot (<strong>.</strong>) character in CSS.</li>
+<li>can be used in imperative (like <code>class=&quot;float-left center&quot;</code>) and declarative fashion (
+like <code>class=&quot;post-preview&quot;</code>) or in combination of both.</li>
+<li><strong>identify ore or multiple</strong> elements at the same time.</li>
+<li>can be <strong>often</strong> since classes are not expected to be unique.</li>
+<li>are the <strong>slower method to find elements</strong> in the DOM since they are not expected to be unique.</li>
+<li>are often used for the <strong>contextual elements</strong> of a web site like like special headers, paragraphs etc.</li>
+</ul>
+<p>Example:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- the text of this "div"s --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"some-class1"</span>&gt;</span>some text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"some-class2"</span>&gt;</span>some text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"some-class1 some-class2"</span>&gt;</span>some text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* gets the color "red" in css for "some-class1" and */</span></div><div class="line"><span class="comment">/* the font weight of "bold" for "some-class2"; the */</span></div><div class="line"><span class="comment">/* last div even gets both properties */</span></div><div class="line"><span class="selector-class">.some-class1</span> &#123;</div><div class="line">  <span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.some-class2</span> &#123;</div><div class="line">  <span class="attribute">font-weight</span>: bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Best-practices"><a href="#Best-practices" class="headerlink" title="Best practices"></a>Best practices</h2><ul>
+<li><em>Do</em> give IDs and classes <strong>expressive names</strong> like <code>.top-heading</code> or <code>.float-left</code>
+in contrast to <code>.a</code> or <code>.b</code>. (You understand, Kevin?!?)</li>
+<li><em>Do</em> use <code>id</code>s in declarative style.</li>
+<li><em>Do</em> use <strong>dash-case names</strong> for classes and IDs!</li>
+<li><em>Do</em> use <strong>IDs rarly</strong> since their usage can lead to problems!</li>
+</ul>
+</p></main><footer id="footer"><hr>&copy; by Marco Schaule
+&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>
