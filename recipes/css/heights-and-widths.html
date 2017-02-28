@@ -1,58 +1,110 @@
-<!DOCTYPE html><html><head><meta charset="utf8"><title>Heights and widths</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><h1>Heights and widths</h1><p><p>This post is about <code>height</code>s and <code>width</code>s of elements. It also mentions
-the <code>overflow</code> attribute that can change the <code>size</code> of elements.
+<!DOCTYPE html><html><head><meta charset="utf8"><title>Heights and widths</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><h1>Heights and Widths</h1><p><p>This post is about <code>height</code>s and <code>width</code>s of elements. It also mentions
+the <code>overflow</code> attribute that can change the size of elements.
 <a id="more"></a></p>
-<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ul>
-<li>Heights and widths of elements are used to define how wide and long
-they are on the screen.</li>
-<li>You can define heights and widths in percentage, pixels, rem etc.</li>
-<li>Using <code>rem</code> makes your web page scalable, since you relate the size
-to a root element, usually the body font size. (<code>rem = root em</code>, the word
-<code>em</code> come from the typographical expectation of the size of a capital M,
-hence <code>em</code> = expected size of M.)</li>
-<li>If width and height are equal, you can use the <code>size</code> property for both.</li>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>The size elements <code>height</code> and <code>width</code></p>
+<ul>
+<li><strong>define the size</strong> of an element on screen.</li>
+<li>can be defined with <strong>relative or absolute</strong> units.</li>
 </ul>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>HTML element:
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"some-class"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Some text ...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>CSS definition:
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.some-class</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">10rem</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</div><div class="line">  <span class="attribute">background-color</span>: lightgray;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid green;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Result:</p>
-<p><style>
-.some-class {
-  width: 10rem;
-  padding: 5px;
-  background-color: lightgray;
-  border: 1px solid gray;
-}
-</style></p>
+<h3 id="How-to-tame-an-element’s-width-or-height-by-a-parent"><a href="#How-to-tame-an-element’s-width-or-height-by-a-parent" class="headerlink" title="How to tame an element’s width or height by a parent:"></a>How to tame an element’s <code>width</code> or <code>height</code> by a parent:</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Current element’s position</th>
+<th>any parent element needs to be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static</td>
+<td>static, relative, absolute, fixed</td>
+</tr>
+<tr>
+<td>relative</td>
+<td>static, relative, absolute, fixed</td>
+</tr>
+<tr>
+<td>absolute</td>
+<td>relative, absolute, fixed</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td><em>not possible</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Example-of-width-and-height-in-px"><a href="#Example-of-width-and-height-in-px" class="headerlink" title="Example of width and height in px:"></a>Example of <code>width</code> and <code>height</code> in <code>px</code>:</h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- width and height are independent sizes --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 50px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
 <div class="tutorials-result">
-  <div class="some-class">
-    <p>Some text ...</p>
+  <div class="box-green" style="width: 200px; height: 50px;"></div>
+</div>
+
+
+<h3 id="Example-of-width-and-height-in-without-parent-element"><a href="#Example-of-width-and-height-in-without-parent-element" class="headerlink" title="Example of width and height in % without parent element:"></a>Example of <code>width</code> and <code>height</code> in <code>%</code> without parent element:</h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Here is no parent element, hence the width is relative to the result frame. --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 80%; height: 50px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 80%; height: 50px;"></div>
+</div>
+
+
+<h3 id="Example-of-width-and-height-in-with-static-parent-element"><a href="#Example-of-width-and-height-in-with-static-parent-element" class="headerlink" title="Example of width and height in % with static parent element:"></a>Example of <code>width</code> and <code>height</code> in <code>%</code> with static parent element:</h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- The inner element and the parent element are both static. --&gt;</span></div><div class="line"><span class="comment">&lt;!-- Hence the inner element is relative to the immediate parent in size. --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 100px;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 50%; height: 50%;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 400px; height: 100px;">
+    <div class="box-red" style="width: 50%; height: 50%;"></div>
   </div>
 </div>
 
-<h2 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h2><ul>
-<li>Sizes generally are depending on the element’s parent element.</li>
-<li>If using <code>%</code> as unit, the child element defines its size depending
-on the parent’s size.</li>
-<li>If using <code>rem</code> or <code>em</code>, the child element defines its size depending
-on the root font size or the parent element’s font size respectively.</li>
-<li>Using <code>px</code> or other independent unites makes elements independent of
-parent elements.</li>
-<li>Elements with independent sizes - if bigger than parent - can only
-overlap their parents if <code>overflow</code> is <code>visible</code>.</li>
+
+<h3 id="Example-of-width-and-height-in-with-static-parent-element-1"><a href="#Example-of-width-and-height-in-with-static-parent-element-1" class="headerlink" title="Example of width and height in % with static parent element:"></a>Example of <code>width</code> and <code>height</code> in <code>%</code> with static parent element:</h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- The inner element is absolute and the parent element is static. --&gt;</span></div><div class="line"><span class="comment">&lt;!-- Here the inner element takes the sizes of the frame as base. --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 100px; position: static;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 80%; height: 100%; position: absolute;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 400px; height: 100px; position: static;">
+    <div class="box-red" style="width: 80%; height: 100%; position: absolute;"></div>
+  </div>
+</div>
+
+
+<h2 id="Overflow"><a href="#Overflow" class="headerlink" title="Overflow"></a>Overflow</h2><p>The <code>overflow</code> property</p>
+<ul>
+<li><strong>limits</strong> the <code>width</code> or <code>height</code> of an element if <code>overflow</code> is <code>hidden</code>.</li>
+<li>sets the maximum of <code>width</code> and <code>height</code> as the size of the maximum of
+the parent if the child’s sizes are overflowing.<br><em>Warning:</em> This is <strong>not</strong> represented by the element’s property when
+accessed via JavaScript.</li>
 </ul>
-<p>Examples of depending elements:</p>
-<p>HTML element:
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// the outer div is 200px wide</div><div class="line">// the inner div is 100px wide</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"inner"</span>&gt;</span>Text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>CSS definition:
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.outer</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.inner</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Examples of independent elements:</p>
-<p>HTML element:
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// the outer div is 200px wide</div><div class="line">// the inner div is 400px wide</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"inner"</span>&gt;</span>Text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>CSS definition:
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.outer</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.inner</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Example-of-width-and-height-without-limit"><a href="#Example-of-width-and-height-without-limit" class="headerlink" title="Example of width and height without limit:"></a>Example of <code>width</code> and <code>height</code> without limit:</h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 100px;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 50px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 200px; height: 100px;">
+    <div class="box-red" style="width: 400px; height: 50px;"></div>
+  </div>
+</div>
+
+
+<h3 id="Example-of-width-and-height-with-limit"><a href="#Example-of-width-and-height-with-limit" class="headerlink" title="Example of width and height with limit:"></a>Example of <code>width</code> and <code>height</code> with limit:</h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 100px; overflow: hidden;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 50px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 200px; height: 100px; overflow: hidden;">
+    <div class="box-red" style="width: 400px; height: 50px;"></div>
+  </div>
+</div>
+
+
+<h3 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h3><ul>
+<li><a href="https://www.w3schools.com/css/css_dimension.asp" target="_blank" rel="external">CSS Height and Width</a> (w3school.com, english)</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width" target="_blank" rel="external">width</a> (MDN, english)</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height" target="_blank" rel="external">height</a> (MDN, english)</li>
+<li><a href="https://wiki.selfhtml.org/wiki/CSS/Wertetypen/Zahlen,_Ma%C3%9Fe_und_Ma%C3%9Feinheiten" target="_blank" rel="external">CSS/Wertetypen/Zahlen, Maße und Maßeinheiten</a> (SelfHTML, german)</li>
+</ul>
 <h2 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h2><ul>
-<li><em>Do</em> use relative sizes (<code>%</code>, <code>rem</code> or <code>em</code>) whenever possible.</li>
+<li><em>Do</em> use relative units for <code>width</code> and <code>height</code> if possible.</li>
 </ul>
 </p></main><footer id="footer"><hr>&copy; by Marco Schaule
 &nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>

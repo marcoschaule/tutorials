@@ -1,0 +1,87 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><title>units</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><h1>Units</h1><p><p>This post introduces the CSS units like <code>px</code>, <code>em</code>, <code>rem</code> etc.
+<a id="more"></a></p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Units (or lengths)</p>
+<ul>
+<li>can be <strong>absolute</strong>: <code>px</code>, <code>pt</code>, <code>cm</code>, <code>mm</code>.</li>
+<li>can be <strong>relative</strong>: <code>em</code>, <code>rem</code>, <code>%</code>.</li>
+<li>are used for <strong>positions and sizes</strong> of window elements.</li>
+</ul>
+<h2 id="The-px-unit"><a href="#The-px-unit" class="headerlink" title="The px unit"></a>The <code>px</code> unit</h2><p>The absolute length <code>px</code></p>
+<ul>
+<li>is relative to the viewing device. For low-dpi devices, <code>1px</code> is one
+device pixel (dot) of the display. For printers and high resolution
+screens <code>1px</code> implies multiple device pixels.</li>
+<li>is used to position elements absolutely on screen or paper.</li>
+</ul>
+<h3 id="Example-with-px"><a href="#Example-with-px" class="headerlink" title="Example with px:"></a>Example with <code>px</code>:</h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- width and height are independent sizes --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 50px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 200px; height: 50px;"></div>
+</div>
+
+
+<h2 id="The-unit"><a href="#The-unit" class="headerlink" title="The % unit"></a>The <code>%</code> unit</h2><p>The relative length <code>%</code></p>
+<ul>
+<li>is relative to the size of the immediate parent element if static.</li>
+<li>is relative to the size of the next parent element with a non-static
+position if itself is non-static.
+(see table below)</li>
+<li>is used for dynamic sizes. For example, the size <code>width: 50%</code> defines,
+that the element’s width is always 50% of the parent, even when
+resizing.</li>
+</ul>
+<h3 id="Example-with"><a href="#Example-with" class="headerlink" title="Example with %:"></a>Example with <code>%</code>:</h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 80%; height: 50px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 80%; height: 50px;"></div>
+</div>
+
+
+<h2 id="The-em-unit"><a href="#The-em-unit" class="headerlink" title="The em unit"></a>The <code>em</code> unit</h2><p>The relative length <code>em</code></p>
+<ul>
+<li>is relative to the font size of the parent element.</li>
+<li>makes the element scalable depending on the parent element’s font size.</li>
+<li>comes from the typographical expectation of the size of a capital M,
+hence <code>em</code> = expected size of M.</li>
+</ul>
+<h3 id="Example-with-em"><a href="#Example-with-em" class="headerlink" title="Example with em"></a>Example with <code>em</code></h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- The parent element has a font size of 10px, so 1em = 10px. --&gt;</span></div><div class="line"><span class="comment">&lt;!-- Hence the width of 20em of the inner element is actually 200px, --&gt;</span></div><div class="line"><span class="comment">&lt;!-- and for the height accordingly. --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 100px; font-size: 10px;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 20em; height: 10em;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 400px; height: 100px; font-size: 10px;">
+    <div class="box-red" style="width: 20em; height: 5em;"></div>
+  </div>
+</div>
+
+
+<h2 id="The-rem-unit"><a href="#The-rem-unit" class="headerlink" title="The rem unit"></a>The <code>rem</code> unit</h2><p>The relative length <code>rem</code> </p>
+<ul>
+<li>is relative to font size of the root element (<code>body</code>).</li>
+<li>makes the element scalable depending on the root font size.</li>
+<li>is the current common standard developers use for lengths.</li>
+<li>stands for <strong>root <code>em</code></strong>.</li>
+</ul>
+<h3 id="Example-with-rem"><a href="#Example-with-rem" class="headerlink" title="Example with rem"></a>Example with <code>rem</code></h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- The body element has a font size of 15px, so 1em = 30px. --&gt;</span></div><div class="line"><span class="comment">&lt;!-- Hence the width of 20em of the inner element is actually 300px, --&gt;</span></div><div class="line"><span class="comment">&lt;!-- and for the height accordingly. --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"font-size: 15px"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 100px;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 20rem; height: 10rem;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
+<div class="tutorials-result">
+  <div class="box-green" style="width: 400px; height: 100px; font-size: 15px;">
+    <div class="box-red" style="width: 20em; height: 5em;"></div>
+  </div>
+</div>
+
+
+<h3 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h3><ul>
+<li><a href="https://www.w3schools.com/cssref/css_units.asp" target="_blank" rel="external">CSS Units</a> (w3school.com, english)</li>
+<li><a href="https://developer.mozilla.org/de/docs/Web/CSS/length" target="_blank" rel="external">CSS Lengths</a> (MDN, english)</li>
+<li><a href="https://wiki.selfhtml.org/wiki/CSS/Wertetypen/Zahlen,_Ma%C3%9Fe_und_Ma%C3%9Feinheiten" target="_blank" rel="external">CSS/Wertetypen/Zahlen, Maße und Maßeinheiten</a> (SelfHTML, german)</li>
+</ul>
+<h2 id="Maximum-and-Minimum-in-Width-and-Height"><a href="#Maximum-and-Minimum-in-Width-and-Height" class="headerlink" title="Maximum and Minimum in Width and Height"></a>Maximum and Minimum in Width and Height</h2><p>… coming coon …</p>
+<h2 id="Best-practices"><a href="#Best-practices" class="headerlink" title="Best practices"></a>Best practices</h2><ul>
+<li><em>Do</em> use <strong>relative units</strong> as much as possible.</li>
+<li><em>Do</em> use <strong><code>rem</code> oder <code>em</code></strong> for the page to be scalable.</li>
+</ul>
+</p></main><footer id="footer"><hr>&copy; by Marco Schaule
+&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>
