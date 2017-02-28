@@ -1,107 +1,118 @@
-<!DOCTYPE html><html><head><meta charset="utf8"><title>Position</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><h1>Position</h1><p><p>This post describes the <code>position</code> property, which defines the location
+<!DOCTYPE html><html><head><meta charset="utf8"><title>Position</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><div class="page-Position"><h1>Position</h1><p><p>This post describes the <code>position</code> property, which defines the position
 of an element relative to its environment elements.
 <a id="more"></a></p>
-<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>The <code>position</code> property</p>
+<h2 id="The-position"><a href="#The-position" class="headerlink" title="The position"></a>The <code>position</code></h2><p>The <code>position</code> property</p>
 <ul>
 <li>defines how an element interacts with its environment.</li>
 <li>comes with the following values:<ul>
-<li>static (default)</li>
-<li>relative</li>
-<li>fixed</li>
-<li>absolute</li>
+<li><code>static</code> (default)</li>
+<li><code>relative</code></li>
+<li><code>fixed</code></li>
+<li><code>absolute</code></li>
 </ul>
 </li>
-<li>can define an element as relation for a child element (later).</li>
+<li>can implicitly define the behaviour of child elements.</li>
 </ul>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><ul>
-<li><p><strong>Example of <code>position: static;</code></strong>: </p>
-<p>Example:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example s150 red relative"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example s100 blue static"</span>&gt;</span>some blue text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example s100 green static"</span>&gt;</span>some green text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Result:</p>
+<h3 id="Example-of-static"><a href="#Example-of-static" class="headerlink" title="Example of static"></a>Example of <code>static</code></h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-green"</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 50px; position: static;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-blue"</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 25px; position: static;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-red"</span> <span class="attr">style</span>=<span class="string">"width: 300px; height: 25px; position: static;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
 <div class="tutorials-result">
-  <div class="example s150 red relative">
-    <div class="example s100 blue static">some blue text ...</div>
-    <div class="example s100 green static">some green text ...</div>
+  <div class="box-green" style="width: 400px; height: 50px; position: static;">
+    <div class="box-blue" style="width: 200px; height: 25px; position: static;"></div>
+    <div class="box-red" style="width: 300px; height: 25px; position: static;"></div>
   </div>
 </div>
 
-<p>Explanation:</p>
+<p>The value <code>static</code></p>
 <ul>
-<li>The <code>static</code> value is the default value.</li>
-<li>Static positioned elements are not affected by the
-<code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.</li>
+<li>is the default value for the position.</li>
+<li>does not change the flow and positioning of elements.
+All elements are displayed one after another.</li>
 </ul>
-</li>
-<li><p><strong>Example of <code>position: relative;</code></strong>: </p>
-<p>Example with <code>left: 10px;</code>:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"outer"</span> <span class="attr">style</span>=<span class="string">"position: relative; background-color: lightblue;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"normal"</span> <span class="attr">style</span>=<span class="string">"position: static; background-color: lightcoral;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"relative"</span> <span class="attr">style</span>=<span class="string">"position: relative; background-color: lightgreen; left: 10px;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Result:</p>
+<h3 id="Example-of-relative"><a href="#Example-of-relative" class="headerlink" title="Example of relative"></a>Example of <code>relative</code></h3><p>HTML markup (relative position === static position):
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-green"</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 50px; position: static;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-blue"</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 25px; position: static;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-red"</span> <span class="attr">style</span>=<span class="string">"width: 300px; height: 25px; position: relative;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
 <div class="tutorials-result">
-  <div id="outer" style="position: relative; background-color: lightblue;">
-    <div id="normal" style="position: static; background-color: lightcoral;">some text ...</div>
-    <div id="relative" style="position: relative; background-color: lightgreen; left: 10px;">some text ...</div>
+  <div class="box-green" style="width: 400px; height: 50px; position: static;">
+    <div class="box-blue" style="width: 200px; height: 25px; position: static;"></div>
+    <div class="box-red" style="width: 300px; height: 25px; position: relative;"></div>
   </div>
 </div>
 
-<p>Example with <code>top: 10px;</code>:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"outer"</span> <span class="attr">style</span>=<span class="string">"position: relative; background-color: lightblue;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"normal"</span> <span class="attr">style</span>=<span class="string">"position: static; background-color: lightcoral;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"relative"</span> <span class="attr">style</span>=<span class="string">"position: relative; background-color: lightgreen; top: 10px;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Result:</p>
+<p>HTML markup (element moved 10px from top relative to its static position):
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-green"</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 50px; position: static;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-blue"</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 25px; position: static;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-red"</span> <span class="attr">style</span>=<span class="string">"width: 300px; height: 25px; position: relative; top: 10px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
 <div class="tutorials-result">
-  <div id="outer" style="position: relative; background-color: lightblue;">
-    <div id="normal" style="position: static; background-color: lightcoral;">some text ...</div>
-    <div id="relative" style="position: relative; background-color: lightgreen; top: 10px;">some text ...</div>
+  <div class="box-green" style="width: 400px; height: 50px; position: static;">
+    <div class="box-blue" style="width: 200px; height: 25px; position: static;"></div>
+    <div class="box-red" style="width: 300px; height: 25px; position: relative; top: 10px"></div>
   </div>
 </div>
 
-<p>Explanation:</p>
+<p>The value <code>relative</code></p>
 <ul>
-<li>The <code>relative</code> value works like the <code>static</code> value, but 
-relative positioned elements are affected by the
-<code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.</li>
-<li>When one of these four properties is changed, the element
-moves according to its actual position independent of
-the parent.</li>
+<li>behaves almost as the value <code>static</code> if element is not moved.</li>
+<li>gives elements the ability to move <em>relative</em> to their <em>static</em> position.</li>
+<li>can implicitly control the behaviour of child elements when
+using properties like <code>z-index: &lt;someValue&gt;</code>, <code>position: absolute</code>,
+position-properties like <code>top</code>, <code>right</code>, <code>bottom</code> or <code>left</code> etc.</li>
 </ul>
-</li>
-<li><p><strong>Example of <code>position: absolute;</code></strong>: </p>
-<p>Example with <code>left: 10px;</code>:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"outer"</span> <span class="attr">style</span>=<span class="string">"position: relative; background-color: lightblue;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"normal"</span> <span class="attr">style</span>=<span class="string">"position: static; background-color: lightcoral;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"absolute"</span> <span class="attr">style</span>=<span class="string">"position: absolute; background-color: lightgreen; left: 10px;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Result:</p>
+<h3 id="Example-of-absolute"><a href="#Example-of-absolute" class="headerlink" title="Example of absolute"></a>Example of <code>absolute</code></h3><p>HTML markup (absolute position === static position):
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-green"</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 50px; position: static;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-blue"</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 25px; position: static;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-red"</span> <span class="attr">style</span>=<span class="string">"width: 300px; height: 25px; position: absolute;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
 <div class="tutorials-result">
-  <div id="outer" style="position: relative; background-color: lightblue;">
-    <div id="normal" style="position: static; background-color: lightcoral;">some text ...</div>
-    <div id="absolute" style="position: absolute; background-color: lightgreen; left: 10px;">some text ...</div>
+  <div class="box-green" style="width: 400px; height: 50px; position: static;">
+    <div class="box-blue" style="width: 200px; height: 25px; position: static;"></div>
+    <div class="box-red" style="width: 300px; height: 25px; position: absolute;"></div>
   </div>
 </div>
 
-<p>Example with <code>top: 10px;</code>:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"outer"</span> <span class="attr">style</span>=<span class="string">"position: relative; background-color: lightblue;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"normal"</span> <span class="attr">style</span>=<span class="string">"position: static; background-color: lightcoral;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"absolute"</span> <span class="attr">style</span>=<span class="string">"position: absolute; background-color: lightgreen; top: 10px;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Result:</p>
+<p>HTML markup (element moved 10px from top relative to its parent’s relative position):
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-green"</span> <span class="attr">style</span>=<span class="string">"width: 400px; height: 50px; position: static;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-blue"</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 25px; position: static;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-red"</span> <span class="attr">style</span>=<span class="string">"width: 300px; height: 25px; position: absolute; top: 10px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
 <div class="tutorials-result">
-  <div id="outer" style="position: relative; background-color: lightblue;">
-    <div id="normal" style="position: static; background-color: lightcoral;">some text ...</div>
-    <div id="absolute" style="position: absolute; background-color: lightgreen; top: 10px;">some text ...</div>
+  <div class="box-green" style="width: 400px; height: 50px; position: static;">
+    <div class="box-blue" style="width: 200px; height: 25px; position: static;"></div>
+    <div class="box-red" style="width: 300px; height: 25px; position: absolute; top: 10px;"></div>
   </div>
 </div>
 
-<p>Explanation:</p>
-<pre><code>* The `absolute` value positions the element relative to its next
-  non-static parent element when changing one or more of the
-  `top`, `bottom`, `left`, and `right` properties.
-* When one of these four properties is changed, the element
-  moves according to its next non-static parent position.
-</code></pre></li>
-<li><p><strong>Example of <code>position: absolute;</code></strong>: </p>
-<p>Example with <code>left: 10px;</code>:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"outer"</span> <span class="attr">style</span>=<span class="string">"position: relative; background-color: lightblue;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"normal"</span> <span class="attr">style</span>=<span class="string">"position: static; background-color: lightcoral;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"absolute"</span> <span class="attr">style</span>=<span class="string">"position: absolute; background-color: lightgreen; left: 10px;"</span>&gt;</span>some text ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Result:</p>
+<p><em>Note:</em> The next parent is the result frame itself.</p>
+<p>The value <code>absolute</code></p>
+<ul>
+<li>behaves almost as the value <code>static</code> if element is not moved.</li>
+<li>gives elements the ability to move <em>relative</em> to their next
+parent’s <em>static</em> position, that itself has <code>position: relative</code>.
+If no parent has <code>position: relative</code>, it is moved <em>relative</em>
+to the client window.</li>
+<li>can implicitly control the behaviour of child elements (like <code>relative</code>)
+when using properties like <code>z-index: &lt;someValue&gt;</code>, <code>position: absolute</code>,
+position-properties like <code>top</code>, <code>right</code>, <code>bottom</code> or <code>left</code> etc.</li>
+</ul>
+<h3 id="Example-of-fixed"><a href="#Example-of-fixed" class="headerlink" title="Example of fixed"></a>Example of <code>fixed</code></h3><p>HTML markup:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-red"</span> <span class="attr">style</span>=<span class="string">"width: 300px; height: 25px; position: absolute; z-index: 100;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-green scrollable"</span> <span class="attr">style</span>=<span class="string">"width: 800px; height: 100px; position: relative;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-blue"</span> <span class="attr">style</span>=<span class="string">"width: 200px; height: 200px; position: static;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Visible result:</p>
 <div class="tutorials-result">
-  <div id="outer" style="position: relative; background-color: lightblue;">
-    <div id="normal" style="position: static; background-color: lightcoral;">some text ...</div>
-    <div id="absolute" style="position: absolute; background-color: lightgreen; left: 10px;">some text ...</div>
+  <div class="box-red" style="width: 300px; height: 25px; position: absolute; z-index: 100;"></div>
+  <div class="box-green scrollable" style="width: 800px; height: 100px; position: relative;">
+    <div class="box-blue" style="width: 200px; height: 200px; position: static;"></div>
   </div>
 </div>
-</li>
+
+<p><em>Note:</em> This is just a simulation of the <code>fixed</code> position. Usually, an element
+with a fixed position is relative to the client window.</p>
+<p>The value <code>fixed</code></p>
+<ul>
+<li>fixes elements on the client window, completely independent of the other elements.</li>
+<li>can be a container for other static, relative or absolute elements.</li>
+<li>can implicitly control the behaviour of child elements (like <code>relative</code>)
+when using properties like <code>z-index: &lt;someValue&gt;</code>, <code>position: absolute</code>,
+position-properties like <code>top</code>, <code>right</code>, <code>bottom</code> or <code>left</code> etc.</li>
 </ul>
-</p></main><footer id="footer"><hr>&copy; by Marco Schaule
+<h3 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h3><ul>
+<li><a href="https://www.w3schools.com/css/css_positioning.asp" target="_blank" rel="external">CSS Layout - The position Property</a> (w3school.com, english)</li>
+<li><a href="https://developer.mozilla.org/de/docs/Web/CSS/position" target="_blank" rel="external">position</a> (MDN, english)</li>
+<li><a href="https://wiki.selfhtml.org/wiki/CSS/Eigenschaften/Positionierung/position" target="_blank" rel="external">CSS/Eigenschaften/Positionierung/position</a> (SelfHTML, german)</li>
+</ul>
+<h2 id="The-positioning-properties-top-right-bottom-and-left"><a href="#The-positioning-properties-top-right-bottom-and-left" class="headerlink" title="The positioning properties top, right, bottom and left"></a>The positioning properties <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code></h2></p></div></main><footer id="footer"><hr>&copy; by Marco Schaule
 &nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>
