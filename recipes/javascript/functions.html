@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><title>Functions</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><div class="page-Functions"><h1>Functions</h1><p><h2 id="Function-Expression-vs-Declaration"><a href="#Function-Expression-vs-Declaration" class="headerlink" title="Function Expression vs. Declaration"></a>Function Expression vs. Declaration</h2><p>In JavaScript, a function can be created as:</p>
+<ul>
+<li>a <strong>function expression</strong> like <code>function someFunc() {}</code> or</li>
+<li>a <strong>function declaration</strong> like <code>var someFunc = function() {};</code>.</li>
+</ul>
+<p>The main difference between these two possibilities is that
+function expressions can be <a href="recipes/javascript/hoisting.html">hoisted</a>
+in the current <a href="recipes/javascript/scope.html">scope</a>,
+whereas function declarations cannot.</p>
+<h2 id="First-Class-Objects"><a href="#First-Class-Objects" class="headerlink" title="First-Class Objects"></a>First-Class Objects</h2><p>In JavaScript, functions are first-class objects. That means, a function</p>
+<ul>
+<li>is an instance of the <code>Object</code> type,</li>
+<li>has a <code>prototype</code> object,</li>
+<li>has a link back to its constructor method,</li>
+<li>can have properties,</li>
+<li>can be stored in a variable,</li>
+<li>can be passed as a parameter to another function and</li>
+<li>can be returned from another function.</li>
+</ul>
+<p>In Detail:</p>
+<ul>
+<li><p><strong>A function is an instance of an <code>Object</code> type:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// this logs true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125; <span class="keyword">instanceof</span> <span class="built_in">Object</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>A function has a <code>prototype</code> object:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// this logs the function's prototype</span></div><div class="line"><span class="built_in">console</span>.log((<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;).prototype);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>A function has a link back to its constructor method:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// this logs 'function myFunc() &#123;&#125;', so the function itself</span></div><div class="line"><span class="built_in">console</span>.log(myFunc.prototype.constructor);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>A function can have properties:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">myFunc.someProp = <span class="string">'someValue'</span>;</div><div class="line"></div><div class="line"><span class="comment">// this logs 'someValue'</span></div><div class="line"><span class="built_in">console</span>.log(myFunc.someProp);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>A function can be stored in a variable:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// this logs 'function()&#123;&#125;'</span></div><div class="line"><span class="built_in">console</span>.log(myFunc);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>A function can be passed as a parameter to another function:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myFunc1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"><span class="keyword">var</span> myFunc2 = <span class="function"><span class="keyword">function</span>(<span class="params">someFunc</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(someFunc);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// this logs 'function()&#123;&#125;'</span></div><div class="line">myFunc2(myFunc1);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>A function can be returned from another function:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// this logs 'function()&#123;&#125;'</span></div><div class="line"><span class="built_in">console</span>.log(myFunc());</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</p></div></main><footer id="footer"><hr>&copy; by Marco Schaule
+&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>

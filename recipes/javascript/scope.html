@@ -1,0 +1,66 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><title>Scope</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><div class="page-Scope"><h1>Scope</h1><p><h2 id="Local-and-global-scope"><a href="#Local-and-global-scope" class="headerlink" title="Local and global scope"></a>Local and global scope</h2><p>In JavaScript the scope can be global or local:</p>
+<ul>
+<li>The <strong>global scope</strong> is <code>window</code> in DOM and <code>global</code>
+in Node.js environments.</li>
+<li>The <strong>local scope</strong> is a body of a <code>function</code>. </li>
+</ul>
+<p>When declaring a variable in JavaScript, it is declared in the current scope.
+In the global scope (<code>window</code> or <code>global</code>), a variable is always added to the
+scope as a property.
+In the global scope that means: <code>var a = 1;</code> is equal to <code>a = 1;</code> is equal to <code>window.a = 1;</code> in a
+DOM environment (and with <code>global.a = 1;</code> in a Node.js environment, respectivly).</p>
+<p>Take a look at the following examples:</p>
+<ul>
+<li><p><strong>Declaration and initialization in the global scope</strong>:<br>In the global scope, the variable declaration adds the variable
+to the <code>window</code> object/scope as property:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* the `global` scope */</span></div><div class="line"><span class="keyword">var</span> a; <span class="comment">// declaration</span></div><div class="line">a = <span class="number">1</span>; <span class="comment">// initialization</span></div><div class="line">  </div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// logs 1</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.a); <span class="comment">// logs 1 (`this` is `window`)</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">// logs 1</span></div><div class="line"><span class="built_in">console</span>.log(a === <span class="built_in">window</span>.a); <span class="comment">// logs true</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Initialization in the global scope, no declaration</strong>:<br>Also, in the global scope, the initialization <em>without</em> declaration
+adds the variable to the <code>window</code> object/scope as a property, too:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* the `global` scope */</span></div><div class="line"><span class="comment">// var a; // no declaration</span></div><div class="line">a = <span class="number">1</span>; <span class="comment">// initialization</span></div><div class="line">  </div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// logs 1</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.a); <span class="comment">// logs 1 (`this` is `window`)</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">// logs 1</span></div><div class="line"><span class="built_in">console</span>.log(a === <span class="built_in">window</span>.a); <span class="comment">// logs true</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Declaration and initialization in a local function scope scope</strong>:<br>If a variable is declared in a local function scope,
+the compiler throws an error when this very variable is
+accessed outside the scope:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* a `local` scope */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">localScopeFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a; <span class="comment">// declaration</span></div><div class="line">  a = <span class="number">1</span>; <span class="comment">// initialization  </span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">localScopeFunction();</div><div class="line">  </div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// throws an error</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.a); <span class="comment">// logs undefined (`this` is `window`)</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">// logs undefined</span></div><div class="line"><span class="built_in">console</span>.log(a === <span class="built_in">window</span>.a); <span class="comment">// throws an error</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>If, on the other hand, the variable is initialized but <em>not</em> declared
+in a local function scope, it is <em>still</em> added to the global
+scope (<code>window</code> or <code>global</code>) as a property:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* a `local` scope */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">localScopeFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// var a; // no declaration</span></div><div class="line">  a = <span class="number">1</span>; <span class="comment">// initialization</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">localScopeFunction();</div><div class="line">  </div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// logs 1</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.a); <span class="comment">// logs 1 (`this` is `window`)</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">// logs 1</span></div><div class="line"><span class="built_in">console</span>.log(a === <span class="built_in">window</span>.a); <span class="comment">// logs true</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>In the local scope itself, the variable declaration doesn’t add the variable
+to any object or scope as a property, but makes it available within
+that scope:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* a `local` scope */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">localScopeFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a; <span class="comment">// declaration</span></div><div class="line">  a = <span class="number">1</span>; <span class="comment">// initialization  </span></div><div class="line">    </div><div class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// logs 1</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a); <span class="comment">// logs undefined (`this` is not `window` any more)</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">// logs undefined</span></div><div class="line">  <span class="built_in">console</span>.log(a === <span class="built_in">window</span>.a); <span class="comment">// logs false</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">localScopeFunction();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>Note</em>: All the examples above can be done
+the exact same way by using <code>global</code>
+in a Node.js environment instead of <code>window</code>.</p>
+<h2 id="The-Immediately-Invoked-Function-Expression-IIFE"><a href="#The-Immediately-Invoked-Function-Expression-IIFE" class="headerlink" title="The Immediately Invoked Function Expression (IIFE)"></a>The Immediately Invoked Function Expression (IIFE)</h2><p>To create a local scope and to avoid working on the globale scope, you can use a so
+called <strong>Immediately Invoked Function Expression (IIFE)</strong>. Here is how you build
+such a function:</p>
+<ol>
+<li><p>Create an anonymous function expression, since it will be a function for your code
+to have a local scope:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Wrap the function with brackets, since anonymous functions can’t exist without being
+assigned in JavaScript:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>Call the anonymous function expression like every other function:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)();</div></pre></td></tr></table></figure>
+</li>
+<li><p>Finally, start coding:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="comment">// code here...</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h2><ul>
+<li><em>Do</em> always declare a variable. If not, the variable is added to the global scope object,
+which can lead to unpredicted results.</li>
+<li><em>Do</em> use a</li>
+</ul>
+</p></div></main><footer id="footer"><hr>&copy; by Marco Schaule
+&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>

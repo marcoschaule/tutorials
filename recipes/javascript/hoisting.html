@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><title>Hoisting</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><div class="page-Hoisting"><h1>Hoisting</h1><p><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>In JavaScript, variables and functions can be <strong>hoisted</strong>. Hoisting means,
+that variable and function declarations are put into memory during the
+compile phase, but stay exactly where you typed them in your coding.
+The consequence is that
+<strong>variables and functions exist and can be used before they are declared</strong> in the
+current execution context and all sub contexts.</p>
+<h2 id="Variable-Hoisting"><a href="#Variable-Hoisting" class="headerlink" title="Variable Hoisting"></a>Variable Hoisting</h2><p>Variables are hoisted by declaring them with <code>var</code> (or <code>let</code> in ECMAScript 6)
+somewhere in the current execution context.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples:"></a>Examples:</h3><ul>
+<li><p><strong>Declaration without initialization</strong>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(x); <span class="comment">// logs undefined</span></div><div class="line"><span class="keyword">var</span> x; <span class="comment">// declaration</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Declaration with initialization</strong>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">4</span>; <span class="comment">// initialization</span></div><div class="line"><span class="built_in">console</span>.log(x); <span class="comment">// logs 4</span></div><div class="line"><span class="keyword">var</span> x; <span class="comment">// declaration</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>No declaration</strong>:<br>In contrast to the previous examples, the following one throws an error
+since <code>x</code> is neither declared nor initialized:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(x); <span class="comment">// throws an error</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Function-hoisting"><a href="#Function-hoisting" class="headerlink" title="Function hoisting"></a>Function hoisting</h2><p>Functions are hoisted by using the
+<a href="recipes/javascript/functions.html">function expression</a>
+somewhere in the current execution context.</p>
+<h3 id="Examples-1"><a href="#Examples-1" class="headerlink" title="Examples:"></a>Examples:</h3><ul>
+<li><p><strong>Function expression (hoisting)</strong>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">someFunction(); <span class="comment">// logs 'it works'</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">someFunction</span>(<span class="params"></span>)</span>&#123;  <span class="comment">// function expression</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'it works'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Function declaration (no hoisting)</strong>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">someFunction(); <span class="comment">// throws an error</span></div><div class="line"><span class="keyword">var</span> someFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// function declaration</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'it works'</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h2><ul>
+<li><em>Do</em> declare the variables at the beginning of the
+current scope to avoid errors.</li>
+<li><em>Do</em> try to avoid hoisting in general since it can
+lead to unexpected behavior.</li>
+</ul>
+</p></div></main><footer id="footer"><hr>&copy; by Marco Schaule
+&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>
