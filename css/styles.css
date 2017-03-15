@@ -20,12 +20,12 @@ pre,
 pre,
 code {
   font-family: 'Source Code Pro', monospace;
-  font-size: 1.6rem;
+  font-size: 1.75rem;
 }
 pre *,
 code * {
   font-family: 'Source Code Pro', monospace;
-  font-size: 1.6rem;
+  font-size: 1.75rem;
 }
 code {
   background: #eee;
@@ -67,7 +67,7 @@ pre code {
   padding-right: 20px;
 }
 .highlight .line {
-  height: 24.640000000000004px;
+  height: 25.984px;
 }
 .highlight .line.marked {
   background: #515151;
@@ -118,7 +118,7 @@ pre code {
   color: #258fb8;
   font-weight: normal;
 }
-.gist .gist-file .gist-meta a:hover {
+.gist .gist-file .gist-meta ahover {
   text-decoration: underline;
 }
 pre .comment,
@@ -244,16 +244,6 @@ a.get-post:hover {
   font-family: 'Merriweather', serif;
   font-weight: 300;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li {
-  color: #333;
-}
 body {
   font-size: 20px;
   line-height: 1.5;
@@ -262,7 +252,6 @@ h1,
 h1 * {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
-  font-size: 6rem;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -293,6 +282,17 @@ h4,
 h5,
 h6 {
   margin-top: 2em;
+  color: #333;
+}
+h1,
+h1 * {
+  font-size: 6rem;
+}
+h2 {
+  font-size: 4.4rem;
+}
+h3 {
+  font-size: 3.4rem;
 }
 h4 {
   font-size: 2.8rem;
@@ -301,36 +301,48 @@ h5 {
   font-size: 2.4rem;
 }
 h6 {
-  font-size: 2rem;
+  font-size: 2.1rem;
+  margin-top: 1.6em;
 }
 p,
 ul,
 ol {
-  margin: 2rem 0;
+  margin: 1.4rem 0;
+}
+p,
+li {
+  color: #333;
+  line-height: 1.7em;
 }
 a {
   color: #0076df;
   cursor: pointer;
 }
 a:hover {
-  color: inherit;
+  color: #000;
   text-decoration: underline;
+}
+a code {
+  text-decoration: underline;
+  -moz-text-decoration-style: dotted;
+  -webkit-text-decoration-style: dotted;
+  text-decoration-style: dotted;
 }
 li {
   margin-bottom: 0.25rem;
 }
 hr {
-  background-color: #ccc;
+  background-color: #ddd;
   border: none;
-  height: 2px;
+  height: 1px;
   margin: 2rem auto;
-  width: 4rem;
+  width: 100%;
 }
 th {
   font-weight: bold;
 }
 code {
-  font-size: 1.7rem;
+  font-size: 1em;
 }
 .static {
   position: static;
@@ -360,7 +372,6 @@ code {
   -webkit-column-gap: 4rem;
   -moz-column-gap: 4rem;
   column-gap: 4rem;
-  overflow: hidden;
 }
 .columns-3 {
   -webkit-column-count: 3;
@@ -369,7 +380,6 @@ code {
   -webkit-column-gap: 4rem;
   -moz-column-gap: 4rem;
   column-gap: 4rem;
-  overflow: hidden;
 }
 .red {
   color: #f00;
@@ -427,8 +437,12 @@ code {
 #footer hr {
   margin: 8rem auto;
 }
-.page-welcome h2:first-child {
+.page-welcome h2:first-child,
+.page-welcome h3:first-child {
   margin-top: 0;
+}
+.page-welcome .row {
+  border-top: 1px solid #ddd;
 }
 /* ******************************************************************************** */
 /* Tutorials result
@@ -462,4 +476,13 @@ code {
 }
 .tutorials-result .box-orange {
   background-color: #ffa07a;
+}
+/* ******************************************************************************** */
+/* Angular example iframes
+/* ******************************************************************************** */
+.runnable-example-frame {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  width: 100%;
 }
