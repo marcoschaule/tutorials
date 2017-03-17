@@ -1,0 +1,102 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><title>AngularJS 1.x Principles</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><div class="page-AngularJS 1.x Principles"><h1>AngularJS 1.x Principles</h1><p><h2 id="Dependency-Injection"><a href="#Dependency-Injection" class="headerlink" title="Dependency Injection"></a>Dependency Injection</h2><p><strong>Dependency Injection (DI)</strong> is a software design pattern
+that deals with how components get hold of their dependencies.</p>
+<p>In Angular, dependencies are items (services, values, filters etc.)
+encapsulated in modules, either the same or another one:</p>
+<ul>
+<li>After adding an item to a module, every other item can inject
+that item.</li>
+<li>After adding module A to another module B, the items of module A
+can be injected into items of module B.</li>
+</ul>
+<p>Example of using dependency injection:
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// via "Inline Implicit Annotation":</span></div><div class="line">angular.module(<span class="string">'myModule'</span>)</div><div class="line">    .controller(<span class="string">'MyController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, SomeService</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// via "Inline Array Annotation" (to protect against minification):</span></div><div class="line">angular.module(<span class="string">'myModule'</span>).controller(<span class="string">'MyController'</span>,</div><div class="line">    [<span class="string">'$scope'</span>, <span class="string">'SomeService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, SomeService</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;]);</div><div class="line"></div><div class="line"><span class="comment">// via "$inject Property Annotation":</span></div><div class="line"><span class="keyword">var</span> MyController = <span class="function"><span class="keyword">function</span>(<span class="params">$scope, SomeService</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">MyController.$inject = [<span class="string">'$scope'</span>, <span class="string">'SomeService'</span>];</div><div class="line">angular.module(<span class="string">'myModule'</span>).controller(<span class="string">'MyController'</span>, MyController);</div><div class="line"></div><div class="line"><span class="comment">// by using the "$injector" injection:</span></div><div class="line"><span class="keyword">var</span> MyController = <span class="function"><span class="keyword">function</span>(<span class="params">$injector</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> $scope      = $injector.get(<span class="string">'$scope'</span>);</div><div class="line">  <span class="keyword">var</span> SomeService = $injector.get(<span class="string">'SomeService'</span>);</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">MyController.$inject = [<span class="string">'$injector'</span>];</div><div class="line">angular.module(<span class="string">'myModule'</span>).controller(<span class="string">'MyController'</span>, MyController);</div></pre></td></tr></table></figure></p>
+<p><em>Note:</em> the <code>$injector</code> can be helpful if you face
+circular dependency injections. By injecting the
+dependencies in item functions, you can avoid the
+endless loops.</p>
+<h3 id="Strict-Dependency-Injection"><a href="#Strict-Dependency-Injection" class="headerlink" title="Strict Dependency Injection"></a>Strict Dependency Injection</h3><p>You can add an <code>ng-strict-di</code> directive on
+the same element as <code>ng-app</code> to opt into strict DI mode:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"myApp"</span> <span class="attr">ng-strict-di</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  I can add: &#123;&#123; 1 + 2 &#125;&#125;.</div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Strict mode throws an error whenever a
+service tries to use implicit annotations.
+If you’re using manual bootstrapping,
+you can also use strict Dependency Injection by providing
+<code>strictDi: true</code> in the optional config argument:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">angular.bootstrap(<span class="built_in">document</span>, [<span class="string">'myApp'</span>], &#123;</div><div class="line">  <span class="attr">strictDi</span>: <span class="literal">true</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h3><ul>
+<li><a href="https://docs.angularjs.org/guide/di" target="_blank" rel="external">Dependency Injection</a> (docs.angularjs.org)</li>
+</ul>
+<h2 id="Two-Way-Data-Binding"><a href="#Two-Way-Data-Binding" class="headerlink" title="Two-Way Data Binding"></a>Two-Way Data Binding</h2><p>The <strong>(Two-Way) Data Binding</strong> represents the interaction between
+the model and the view.
+To remember, the model is nothing but
+data and the view is the compiled template.
+Whenever the model
+changes, the view is updated, and whenever the view changes,
+the model is updated, hence <em>Two-Way</em>.
+You can think of the view as simply an instant projection of
+the model.</p>
+<p>This behavior is realized by the so called <strong><code>$digest</code> Loop</strong></p>
+<h3 id="Links-1"><a href="#Links-1" class="headerlink" title="Links"></a>Links</h3><ul>
+<li><a href="https://docs.angularjs.org/guide/databinding" target="_blank" rel="external">Data Binding</a> (docs.angularjs.org)</li>
+</ul>
+<h2 id="The-digest-Loop"><a href="#The-digest-Loop" class="headerlink" title="The $digest Loop"></a>The <code>$digest</code> Loop</h2><p>Angular’s <strong><code>$digest</code> Loop</strong> is the pendant to JavaScript’s
+Event Loop:
+Every UI-Element in a scope, a <code>$watch</code>er is
+added to a watch list.
+And every time a model variable in a scope changes,
+Angular runs the Digest Loop to check whether another
+model variable has to be updated accordingly.</p>
+<p>The check for changes, Angular uses a pattern called
+<strong>Dirty Checking</strong>.
+Dirty checking means checking for a value that has changed.
+If this leads to an update of another value, the loop does
+that. Then the loop dirty checks again, whether the change
+of the updated value leads to another change, and so on.</p>
+<p>Usually, after dirty checking 10 times, the digest loop
+aborts throwing an exception.</p>
+<h3 id="Links-2"><a href="#Links-2" class="headerlink" title="Links"></a>Links</h3><ul>
+<li><a href="https://www.ng-book.com/p/The-Digest-Loop-and-apply/" target="_blank" rel="external">The Digest Loop and $apply</a> (ng-book.com)</li>
+<li><a href="https://www.sitepoint.com/understanding-angulars-apply-digest/" target="_blank" rel="external">Understanding Angular’s $apply() and $digest()</a> (sitepoint.com)</li>
+<li><a href="https://www.thinkful.com/projects/understanding-the-digest-cycle-528/" target="_blank" rel="external">Understanding the Digest Cycle</a> (thinkful.com)</li>
+<li><a href="http://onehungrymind.com/notes-on-angularjs-scope-life-cycle/" target="_blank" rel="external">Notes On AngularJS Scope Life-Cycle</a> (onehungrymind.com)</li>
+</ul>
+<h2 id="MVVM-Pattern"><a href="#MVVM-Pattern" class="headerlink" title="MVVM Pattern"></a>MVVM Pattern</h2><p>The <strong>Model-View-ViewModel Pattern (MVVM)</strong> is a special
+version of the MVC Pattern. The ViewModel in the MVVM
+is the idea of self-organizing two-way bound data,
+which makes the view and the model completely independent
+from the controller.</p>
+<p>The pattern does not imply that there is no controller
+at all, it just wants the model data independent. Since
+the model data is usually stored in a service, the
+controller just connects this very data with the
+view and the model. It does not store any data, it does
+not manipulate any data, nor does it control any data.</p>
+<p>Next to connecting the ModelView with services (and
+maybe other sources),
+the controller has the job the react on events from the
+view to fire additional view events if necessary, and to
+encapsulate the ViewModel within a limited scope.</p>
+<h3 id="Links-3"><a href="#Links-3" class="headerlink" title="Links"></a>Links</h3><ul>
+<li><a href="https://dzone.com/articles/angularjs-tutorial-lesson-1" target="_blank" rel="external">Angular JS Tutorial – MVC and MVVM Design Patterns</a> (dzone.com)</li>
+<li><a href="https://www.codeproject.com/Articles/100175/Model-View-ViewModel-MVVM-Explained" target="_blank" rel="external">Model-View-ViewModel (MVVM) Explained</a> (codeproject.com)</li>
+</ul>
+<h2 id="Interpolation"><a href="#Interpolation" class="headerlink" title="Interpolation"></a>Interpolation</h2><p><strong>Interpolation</strong> is a process happening during the compilation. It is
+nothing but replacing the variable names in expressions by their
+model representation.</p>
+<p>For example, a template part like
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-href</span>=<span class="string">"img/&#123;&#123;vm.objUser.strUsername&#125;&#125;.jpg"</span>&gt;</span></div><div class="line">  Hello &#123;&#123;vm.objUser.strUsername&#125;&#125;!</div><div class="line">  (Email: &#123;&#123;vm.objUser.strEmail&#125;&#125;)</div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>with a model representation like
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vm.objUser = &#123;</div><div class="line">  <span class="attr">strUsername</span>: <span class="string">'jondoe'</span>,</div><div class="line">  <span class="attr">strEmail</span>   : <span class="string">'jondoe@email.web'</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>will be interpolated to
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-href</span>=<span class="string">"img/jondoe.jpg"</span>&gt;</span></div><div class="line">  Hello jondoe!</div><div class="line">  (Email: jondoe@email.web)</div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Additionally, the compiler adds watchers to the
+interpolation to update the values whenever the
+model changes.</p>
+<h3 id="Links-4"><a href="#Links-4" class="headerlink" title="Links"></a>Links</h3><ul>
+<li><a href="https://docs.angularjs.org/guide/interpolation" target="_blank" rel="external">Interpolation and data-binding</a> (docs.angularjs.org)</li>
+</ul>
+<h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><ul>
+<li>considered Angular version: v1.6.3</li>
+</ul>
+</p></div></main><footer id="footer"><hr>&copy; by Marco Schaule
+&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>

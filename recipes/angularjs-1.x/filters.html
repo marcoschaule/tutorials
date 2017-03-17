@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><title>AngularJS 1.x Filters</title><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/tutorials/css/styles.css"><base href="/tutorials/"></head><body><div class="container" id="container"><header id="header"><div id="title"><a href="/tutorials/">Tutorials</a></div><div id="subtitle">Learning by Recipes.</div></header><nav id="navigation"><a href="/tutorials/">Home</a><a class="active" href="/tutorials/blog.html">Blog</a><a href="/tutorials/about.html">About</a><a href="/tutorials/contact.html">Contact</a></nav><main id="content"><div class="page-AngularJS 1.x Filters"><h1>AngularJS 1.x Filters</h1><p><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>An Angular <strong>filter</strong> is a function that</p>
+<ul>
+<li><strong>can be used in expressions</strong> to transform the value of the expression,</li>
+<li><strong>can be used in items</strong> via the <code>$filter</code> service to transform values, and</li>
+<li><strong>can be chained and extended</strong> with attributes.</li>
+</ul>
+<p>Here an example of a filter definition:
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">angular</div><div class="line">  .module(<span class="string">'myModule'</span>)</div><div class="line">  .controller(<span class="string">'myFilter'</span>, myFilter);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFilter</span>(<span class="params">SomeService</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> filter;</div><div class="line"></div><div class="line">  <span class="comment">// define the filter function to be returned</span></div><div class="line">  filter = <span class="function"><span class="keyword">function</span>(<span class="params">anyInput, anyArgument</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> anyOutput = anyInput;</div><div class="line">    <span class="comment">// do something with "strInput"</span></div><div class="line">    <span class="keyword">if</span> (anyArgument) &#123;</div><div class="line">      <span class="comment">// do something with "anyArgument"</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> anyOutput;</div><div class="line">  &#125;;</div><div class="line">  </div><div class="line">  <span class="keyword">return</span> filter;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// property injection</span></div><div class="line">myFilter.$inject = [<span class="string">'SomeService'</span>];</div></pre></td></tr></table></figure></p>
+<p>After defining a filter like this, it can be used like:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; someExpression | myFilter &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Using an argument with a filter can be done like:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; someExpression | myFilter:anyArgument &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Multiple filters can be chained:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; someExpression | someFilter1 | someFilter2 &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Multiple arguments can be used like:
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; someExpression | someFilter1 | someFilter2:arg1:arg2:arg3 &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Built-in-filters"><a href="#Built-in-filters" class="headerlink" title="Built-in filters"></a>Built-in filters</h2><p>Built-in filters are for instance:</p>
+<ul>
+<li><code>currency</code> to transform a number to be a valid currency string</li>
+<li><code>date</code> to transform a number/date to be a valid date</li>
+<li><code>filter</code> to filter by text</li>
+<li><code>json</code> to transform an object to JSON</li>
+<li><code>limitTo</code> to limit numbers up and down</li>
+<li><code>lowercase</code> to transform text to pure lowercase text</li>
+<li><code>number</code> to transform a string to a valid number</li>
+<li><code>orderBy</code> to order a list by a specific field</li>
+<li><code>uppercase</code> to transform text to pure uppercase text</li>
+</ul>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><ul>
+<li><a href="https://docs.angularjs.org/guide/filter" target="_blank" rel="external">Filters</a> (docs.angularjs.org)</li>
+<li><a href="https://www.w3schools.com/angular/angular_filters.asp" target="_blank" rel="external">AngularJS Services</a> (w3schools.com)</li>
+<li><a href="https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#filters" target="_blank" rel="external">Services - John Papa’s AngularJS Style Guide</a> (GitHub)</li>
+</ul>
+</p></div></main><footer id="footer"><hr>&copy; by Marco Schaule
+&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="/tutorials/imprint.html" title="Imprint">Imprint</a></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="/tutorials/scripts/scripts.js"></script></body></html>
